@@ -21,9 +21,11 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+a {
+    color: aliceblue;
+}
 .card {
-    background-color: rgba(255, 255, 255, {{ alpha }});
+    background-color: rgba(43,49,60, {{ alpha }});
     border-radius: 30px;
     padding: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,7 +39,7 @@ body {
 }
 
 .awake {
-    color: rgb(16, 128, 0);
+    color: #71d4f3;
 }
 
 .error {
