@@ -4,11 +4,12 @@ import utils as u
 from data import data as data_init
 from flask import Flask, render_template, request, url_for, redirect, flash, make_response
 from markupsafe import escape
+import requests, asyncio
 
 
 d = data_init()
 app = Flask(__name__)
-
+dglabRunning=False
 # ---
 
 
@@ -132,6 +133,19 @@ def set_normal():
             code='not authorized',
             message='invaild secret'
         )
+
+async def DgStart():
+    postData = {"strength.set": d.data['DGLab']['strength']}
+    response = requests.post(d.data['DGLab']['url'], data=postData, proxies={})
+    print(response.text)
+    await asyncio.sleep(int(d.data['DGLab']['duration']))
+    response = requests.post(d.data['DGLab']['url'], data={"strength.set": "0"}, proxies={})
+    print(response.text)
+    
+@app.route("/button1", methods=["POST"])
+def button1_click():
+    asyncio.run(DgStart())
+    return f"郊狼运行完成，强度{d.data['DGLab']['strength']}，持续{d.data['DGLab']['duration']}秒！"
 
 
 
