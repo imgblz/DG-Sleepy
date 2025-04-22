@@ -9,7 +9,6 @@ import requests, asyncio
 
 d = data_init()
 app = Flask(__name__)
-dglabRunning=False
 # ---
 
 
@@ -135,12 +134,19 @@ def set_normal():
         )
 
 async def DgStart():
-    postData = {"strength.set": d.data['DGLab']['strength']}
-    response = requests.post(d.data['DGLab']['url'], data=postData, proxies={})
-    print(response.text)
-    await asyncio.sleep(int(d.data['DGLab']['duration']))
-    response = requests.post(d.data['DGLab']['url'], data={"strength.set": "0"}, proxies={})
-    print(response.text)
+    if d.data['DGLab']['fire']:
+        postData = {"strength": d.data['DGLab']['strength'],"time":str(1000*int(d.data['DGLab']['duration'])),"override":'true'} #override:多次一键开火时，是否重置时间，true为重置时间，false为叠加时间
+        u.info(str(postData))
+        url = d.data['DGLab']['url']+"/api/v2/game/all/action/fire"
+        response = requests.post(url,data=postData,proxies={})
+    else:
+        postData = {"strength.set": d.data['DGLab']['strength']}
+        url = d.data['DGLab']['url']+"/api/v2/game/all/strength"
+        response = requests.post(url, data=postData, proxies={})
+        await asyncio.sleep(int(d.data['DGLab']['duration']))
+        response = requests.post(url, data={"strength.set": "0"}, proxies={})
+    
+    u.info(response.text)
     
 @app.route("/button1", methods=["POST"])
 def button1_click():

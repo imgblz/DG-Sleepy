@@ -2,7 +2,7 @@
 
 > What are you doing?
 
-一个查看个人在线状态，以及视奸他在用什么软件的 Flask 网站，让他人能知道你不在而不是故意吊他/她
+一个查看个人在线状态，以及视奸他在用什么软件，使用郊狼电击TA的 Flask 网站，让他人能知道你不在而不是故意吊他/她，并通过暴力手段控制他。
 仅仅是在仓库中加入了App_name字段,手机客户端使用请搭配Macrodroid，来实现切换应用上报信息/同步睡眠信息
 Macrodroid配置文件请下载仓库中的"前台应用状态.macro"
 
@@ -17,8 +17,6 @@ Macrodroid配置文件请下载仓库中的"前台应用状态.macro"
 网页:
 
 ![web-1](img/image1.png)
-
-![web-2](img/image2.png)
 
 服务器:
 
@@ -48,7 +46,11 @@ cd sleepy
 # 其实只有 Flask (目前)
 ```
 
-3. 编辑配置文件
+3. 运行DG-Lab-Coyote-Game-Hub
+
+参考https://github.com/hyperzlib/DG-Lab-Coyote-Game-Hub
+
+4. 编辑配置文件
 
 先启动一遍程序:
 
