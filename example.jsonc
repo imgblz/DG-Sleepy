@@ -32,5 +32,11 @@ version now: 2
         "learn_more": "GitHub Repo", // 更多信息链接的提示, 默认为 github repo
         "repo": "https://github.com/1812z/sleepy", // 更多信息链接的目标, 可填存储库链接
         "more_text": "" // 内容将在状态信息和 "你可以通过这个页面知晓..." 中间插入 (不转义); ps: 可以在这里放你联系方式的链接
+    },
+    "DGLab": {
+    "url": "http://127.0.0.1:8920",
+    "strength": "25",
+    "duration": "4",
+    "fire": true
     }
 }
